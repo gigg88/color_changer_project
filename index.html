@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+
+<!--Write a script that changes the background color of the <body> 
+    element via inline styling when button.change-color is clicked and sets that color value to the text content of span.color.
+
+<div class="widget">
+   <p>Background color: <span class="color">-</span></p>
+   <button type="button" class="change-color">Change color</button>
+</div>
+
+To generate a random color, use the getRandomHexColor() function.
+
+function getRandomHexColor() {
+   return `#${Math.floor(Math.random() * 16777215)
+     .toString(16)
+     .padStart(6, 0)}`;
+}
+
+Note that the getRandomHexColor() function returns the color in hex format, while the background color
+of the <body> will be in rgb format. This is normal and does not require any modifications.
+
+What the mentor will pay attention to during the inspection:
+
+Background on <body> is set only after clicking button.change-color
+Each time the button.change-color element is clicked, the <body> background is painted with a new random color
+The <body> and span.color values are the same color
+
+
+-->
+</head>
+
+
+<body id="bgColor">
+
+    <div class="widget">
+        <p>Background color: <span class="color">-</span></p>
+        <button type="button" class="change-color">Change color</button>
+     </div>
+
+ <script>
+
+
+const colorChange = document.querySelector(".change-color");
+const colorSpan = document.querySelector(".color");
+
+function getRandomHexColor(event) {
+    return `#${Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, 0)}`;
+
+ }
+
+ 
+colorChange.addEventListener("click", function(event) {
+    newBgColor = getRandomHexColor();
+    bodyBgColor = document.getElementById("bgColor");
+    bodyBgColor.style.backgroundColor = newBgColor;
+    colorSpan.textContent = newBgColor;
+});
+
+</script>
+    
+</body>
+</html>
